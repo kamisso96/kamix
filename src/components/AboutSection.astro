@@ -1,0 +1,336 @@
+---
+// src/components/AboutSection.astro
+---
+
+<section class="about-section" id="apropos" role="region" aria-label="À propos">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>À PROPOS DE KAMIX</h2>
+      <p class="section-subtitle">
+        Un cabinet de conseil international basé à Haikou, au cœur de la coopération Chine-Monde.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <!-- Colonne image -->
+      <div class="about-image" data-aos="fade-right">
+        <img
+          src="/fondateur.jpg"
+          alt="Fondateur et CEO de KAMIX Consulting"
+          width="640"
+          height="420"
+          loading="lazy"
+          class="about-img"
+          onerror="this.style.display='none';"
+        />
+        <div class="about-image-badge" aria-hidden="true">
+          <span class="badge-icon">👤</span>
+          <span>Fondateur & CEO</span>
+        </div>
+      </div>
+
+      <!-- Colonne contenu (faits, mission, vision) -->
+      <div class="about-content" data-aos="fade-left">
+        <div class="about-facts">
+          <div class="fact-item">
+            <span class="fact-label">Basé à</span>
+            <span class="fact-value">Haikou, Chine</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Expertise</span>
+            <span class="fact-value">Locale en Chine</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Marchés</span>
+            <span class="fact-value">Mondial</span>
+          </div>
+        </div>
+
+        <div class="mission-vision">
+          <div class="mv-card">
+            <h3 class="mv-title">Notre Mission</h3>
+            <p class="mv-text">
+              Pour simplifier les opportunités internationales en connectant les personnes, les entreprises et les institutions à travers les frontières.
+            </p>
+          </div>
+          <div class="mv-card">
+            <h3 class="mv-title">Notre Vision</h3>
+            <p class="mv-text">
+              Devenir un partenaire fiable à l'échelle mondiale pour la coopération Chine – Monde.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc histoire : pleine largeur, sans fond, titre centré -->
+      <div class="about-history" data-aos="fade-up">
+        <h3 class="history-title">Notre Histoire</h3>
+        <p class="history-text">
+          Fondé en 2025 à Haikou, KAMIX Consulting accompagne les entreprises, entrepreneurs et particuliers dans leurs projets entre la Chine, l’Afrique et les marchés internationaux.
+          Né de la vision d’un entrepreneur ivoirien souhaitant faciliter les échanges avec la Chine, KAMIX s’est construit autour d’un objectif : transformer les opportunités internationales en connexions concrètes, fiables et durables. Nous intervenons notamment dans le conseil commercial, le sourcing et l’approvisionnement, la logistique internationale ainsi que l’accompagnement académique. Grâce à notre présence en Chine et à notre réseau de partenaires, nous facilitons l’accès aux opportunités tout en apportant un accompagnement adapté aux réalités de chaque marché.
+          Notre ambition est simple : rapprocher les marchés, faciliter les échanges et créer de nouvelles opportunités au-delà des frontières.
+          KAMIX Consulting combine une expertise locale approfondie du marché chinois avec une compréhension fine des réalités économiques mondiales. Notre équipe accompagne les entreprises et les étudiants dans leurs projets en Chine, en simplifiant chaque étape du processus.
+        </p>
+      </div>
+
+      <!-- Bouton centré sous l'histoire avec le même style que le hero -->
+      <div class="about-cta-wrapper">
+        <a href="#contact" class="btn btn-hero btn-hero-primary about-cta">
+          Discutons de votre projet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background: var(--white);
+  }
+
+  .about-section .section-header h2 {
+    color: var(--primary);
+    font-size: calc(var(--title-size) * 1.1);
+  }
+
+  .about-section .section-subtitle {
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 992px) {
+    .about-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+    }
+
+    .about-history,
+    .about-cta-wrapper {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .about-image {
+    position: relative;
+    border-radius: var(--border-radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .about-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+  }
+
+  .about-image-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: rgba(11, 31, 58, 0.85);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(201, 162, 39, 0.3);
+  }
+
+  .badge-icon {
+    font-size: 1.1rem;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .about-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 2px solid var(--primary-lighter);
+  }
+
+  .fact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .fact-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-light);
+  }
+
+  .fact-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 1.1rem;
+  }
+
+  .mission-vision {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 767px) {
+    .mission-vision {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .mv-card {
+    background: var(--lighter);
+    padding: 1.5rem;
+    border-radius: 14px;
+    border-left: 4px solid var(--primary);
+  }
+
+  .mv-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .mv-text {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Bloc histoire sans fond ni bordure */
+  .about-history {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .history-title {
+    font-size: 1.1rem;
+    font-weight: 700; /* déjà en gras, conservé */
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  /* Description de l'histoire en gras */
+  .history-text {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 700; /* ajouté */
+  }
+
+  /* Centrage du bouton */
+  .about-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .about-cta {
+    margin: 0 auto;
+    font-weight: 600;
+  }
+
+  /* ===== Styles copiés du hero pour le bouton ===== */
+  .btn-hero {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    background: var(--primary);
+    transform: translateX(-50%);
+    transition: width 0.5s ease;
+    z-index: -1;
+  }
+
+  .btn-hero:hover::before,
+  .btn-hero:focus-visible::before {
+    width: 100%;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-primary:visited,
+  .btn-hero-primary:active {
+    background: var(--white) !important;
+    color: var(--primary) !important;
+    border: 2px solid var(--primary) !important;
+    text-decoration: none !important;
+  }
+
+  .btn-hero-primary:hover,
+  .btn-hero-primary:focus-visible {
+    color: var(--white) !important;
+    border-color: var(--primary) !important;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 575px) {
+    .about-facts {
+      gap: 1rem;
+    }
+    .fact-item {
+      width: calc(50% - 0.5rem);
+    }
+    .mv-card {
+      padding: 1.25rem;
+    }
+    .fact-value,
+    .mv-title,
+    .history-title {
+      font-size: 1rem;
+    }
+    .mv-text,
+    .history-text {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-cta:hover {
+      transform: none;
+    }
+    .btn-hero::before {
+      transition: none;
+    }
+    .btn-hero:hover::before {
+      width: 100%;
+    }
+  }
+</style>

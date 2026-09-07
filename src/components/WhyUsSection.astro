@@ -1,0 +1,196 @@
+---
+// src/components/WhyUsSection.astro
+import { whyUsItems } from '../data/whyUs';
+---
+
+<section class="whyus-section" id="pourquoi-kamix" role="region" aria-label="Pourquoi choisir KAMIX">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>POURQUOI CHOISIR KAMIX ?</h2>
+      <p class="section-subtitle">
+        Notre expertise unique et notre position stratégique font de nous le partenaire idéal pour vos projets.
+      </p>
+    </div>
+
+    <div class="whyus-grid">
+      {whyUsItems.map((item, index) => (
+        <div
+          class="whyus-card"
+          data-aos="zoom-in"
+          data-aos-delay={String(index * 80)}
+        >
+          <div class="whyus-icon-wrap">
+            <svg class="whyus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {item.icon === 'map' && (
+                <>
+                  <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
+                  <path d="M15 5.764v15"/>
+                  <path d="M9 3.236v15"/>
+                </>
+              )}
+              {item.icon === 'globe' && (
+                <>
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </>
+              )}
+              {item.icon === 'handshake' && (
+                <>
+                  <path d="m11 17 2 2a1 1 0 1 0 3-3"/>
+                  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/>
+                  <path d="m21 3 1 11h-2"/>
+                  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/>
+                  <path d="M3 4h8"/>
+                </>
+              )}
+              {item.icon === 'key' && (
+                <>
+                  <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                </>
+              )}
+              {item.icon === 'tools' && (
+                <>
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </>
+              )}
+            </svg>
+          </div>
+          <h3 class="whyus-title">{item.title}</h3>
+          <p class="whyus-description">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .whyus-section {
+    background: linear-gradient(180deg, var(--light) 0%, var(--lighter) 100%);
+  }
+
+  /* Titre de section en doré et police augmentée */
+  .whyus-section .section-header h2 {
+    color: var(--primary);
+    font-size: calc(var(--title-size) * 1.1);
+  }
+
+  /* Sous-titre en gras et taille augmentée */
+  .whyus-section .section-subtitle {
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  /* === Utilisation de flex pour centrer les cartes === */
+  .whyus-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .whyus-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius-card);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+  }
+
+  /* Tablette : 2 cartes par ligne */
+  @media (min-width: 576px) {
+    .whyus-card {
+      width: calc(50% - 0.75rem);
+    }
+  }
+
+  /* Desktop : 3 cartes par ligne */
+  @media (min-width: 992px) {
+    .whyus-card {
+      width: calc(33.333% - 1rem);
+    }
+  }
+
+  /* === Hover plus marqué === */
+  .whyus-card:hover,
+  .whyus-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--primary-light);
+  }
+
+  .whyus-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    transition: background 0.3s ease;
+  }
+
+  .whyus-card:hover .whyus-icon-wrap {
+    background: var(--primary);
+  }
+
+  .whyus-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--primary);
+    transition: color 0.3s ease;
+  }
+
+  .whyus-card:hover .whyus-icon {
+    color: var(--white);
+  }
+
+  /* Titres des cartes agrandis */
+  .whyus-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+  }
+
+  /* Descriptions agrandies */
+  .whyus-description {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 575px) {
+    .whyus-card {
+      padding: 1.5rem 1.25rem;
+    }
+    .whyus-icon-wrap {
+      width: 50px;
+      height: 50px;
+    }
+    .whyus-title {
+      font-size: 1.1rem;
+    }
+    .whyus-description {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whyus-card {
+      transition: none;
+    }
+    .whyus-card:hover,
+    .whyus-card:focus-within {
+      transform: none;
+    }
+  }
+</style>

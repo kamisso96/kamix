@@ -1,0 +1,96 @@
+---
+// src/components/Preloader.astro
+---
+
+<div class="preloader" id="preloader" role="status" aria-label="Chargement de la page">
+  <div class="preloader-ring preloader-ring-1"></div>
+  <div class="preloader-ring preloader-ring-2"></div>
+  <div class="preloader-ring preloader-ring-3"></div>
+</div>
+
+<style>
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  
+  .preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  .preloader-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    border-top-color: transparent;
+    animation: preloader-spin 1.2s linear infinite;
+  }
+  
+  .preloader-ring-1 {
+    width: 80px;
+    height: 80px;
+    animation-duration: 1.2s;
+  }
+  
+  .preloader-ring-2 {
+    width: 110px;
+    height: 110px;
+    animation-duration: 1.8s;
+    animation-direction: reverse;
+    opacity: 0.7;
+  }
+  
+  .preloader-ring-3 {
+    width: 140px;
+    height: 140px;
+    animation-duration: 2.4s;
+    opacity: 0.4;
+  }
+  
+  @keyframes preloader-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .preloader-ring {
+      animation: none;
+      border-top-color: var(--white);
+    }
+  }
+</style>
+
+<script>
+  // Masquer le preloader après le chargement de la page ou après un délai de sécurité
+  function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('hidden');
+      // Supprimer l'élément du DOM après la transition
+      setTimeout(() => {
+        preloader.remove();
+      }, 500);
+    }
+  }
+
+  // Si la page est déjà chargée
+  if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 500);
+  } else {
+    // Sinon, attendre l'événement load
+    window.addEventListener('load', () => {
+      setTimeout(hidePreloader, 500);
+    });
+    
+    // Délai de sécurité : masquer après 3 secondes même si la page n'est pas chargée
+    setTimeout(hidePreloader, 3000);
+  }
+</script>

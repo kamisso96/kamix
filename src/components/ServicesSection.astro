@@ -1,0 +1,259 @@
+---
+// src/components/ServicesSection.astro
+import { services } from '../data/services';
+---
+
+<section class="services-section" id="services" role="region" aria-label="Nos services">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>NOS SERVICES</h2>
+      <p class="section-subtitle">
+        Des solutions complètes pour vous accompagner dans vos projets entre la Chine et le Monde.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <article
+          class="service-card"
+          data-aos="fade-up"
+          data-aos-delay={String(index * 100)}
+        >
+          <div class="service-icon-wrap">
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {service.icon === 'briefcase' && (
+                <>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </>
+              )}
+              {service.icon === 'search' && (
+                <>
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </>
+              )}
+              {service.icon === 'ship' && (
+                <>
+                  <path d="M2 20a2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1 2.4 2.4 0 0 0 2-1 2.4 2.4 0 0 1 2-1 2.4 2.4 0 0 1 2 1 2.4 2.4 0 0 0 2 1" />
+                  <path d="M4 18l-1-5h18l-1 5" />
+                  <path d="M5 13V7h14v6" />
+                  <path d="M12 7V2" />
+                  <path d="M8 2h8" />
+                </>
+              )}
+              {service.icon === 'graduation-cap' && (
+                <>
+                  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                  <path d="M22 10v6" />
+                  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                </>
+              )}
+              {service.icon === 'award' && (
+                <>
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                </>
+              )}
+            </svg>
+          </div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <a href="#contact" class="service-link">
+            En savoir plus
+            <svg class="service-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background: var(--white);
+  }
+
+  /* Titre de section en doré et police augmentée */
+  .services-section .section-header h2 {
+    color: var(--primary);
+    font-size: calc(var(--title-size) * 1.1);
+  }
+
+  /* Sous-titre en gras */
+  .services-section .section-subtitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: var(--border-radius-card);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(201, 162, 39, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @media (min-width: 576px) {
+    .service-card {
+      width: calc(50% - 2rem);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .service-card {
+      width: calc(33.333% - 2rem);
+    }
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: rgba(201, 162, 39, 0.2);
+  }
+
+  .service-card:hover::before,
+  .service-card:focus-within::before {
+    opacity: 1;
+  }
+
+  .service-icon-wrap {
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    background: var(--primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .service-card:hover .service-icon-wrap {
+    background: var(--primary);
+  }
+
+  .service-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary);
+    transition: color 0.3s ease;
+  }
+
+  .service-card:hover .service-icon {
+    color: var(--white);
+  }
+
+  /* Titre de carte augmenté */
+  .service-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+  }
+
+  /* Description augmentée */
+  .service-description {
+    color: var(--gray);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Lien augmenté et centré */
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: gap 0.3s ease, color 0.3s ease;
+    align-self: center; /* centre le bouton horizontalement */
+  }
+
+  .service-link:hover,
+  .service-link:focus-visible {
+    color: var(--primary-dark);
+    gap: 0.75rem;
+  }
+
+  .service-link-icon {
+    transition: transform 0.3s ease;
+    width: 18px;
+    height: 18px;
+  }
+
+  .service-link:hover .service-link-icon {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 575px) {
+    .service-card {
+      padding: 1.75rem 1.5rem;
+      width: 100%;
+    }
+    .service-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+    }
+    .service-title {
+      font-size: 1.2rem;
+    }
+    .service-description {
+      font-size: 1rem;
+    }
+    .service-link {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      transition: none;
+    }
+    .service-card:hover,
+    .service-card:focus-within {
+      transform: none;
+    }
+    .service-link {
+      transition: none;
+    }
+  }
+</style>

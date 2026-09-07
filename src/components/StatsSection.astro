@@ -1,0 +1,133 @@
+---
+// src/components/StatsSection.astro
+const stats = [
+  { value: 10, suffix: '+', label: 'Clients accompagnés' },
+  { value: 5, suffix: '+', label: 'Étudiants installés' },
+  { value: 30, suffix: '+', label: 'Partenaires commerciaux' },
+  { value: 2, suffix: ' ans', label: 'D’expérience' },
+];
+---
+
+<section class="stats-section" id="chiffres-cles" role="region" aria-label="Chiffres clés">
+  <div class="container">
+    <div class="stats-grid">
+      {stats.map((stat, index) => (
+        <div class="stat-card" data-aos="fade-up" data-aos-delay={String(index * 100)}>
+          <span class="stat-value" data-target={stat.value} data-suffix={stat.suffix}>
+            0{stat.suffix}
+          </span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    background: var(--secondary);
+    color: var(--white);
+    padding: var(--section-padding) 0;
+  }
+
+  .stats-section .section-header h2 {
+    color: var(--primary);
+    font-size: calc(var(--title-size) * 1.1);
+  }
+
+  .stats-section .section-subtitle {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  @media (min-width: 576px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: var(--border-radius-card);
+    padding: 2rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (max-width: 575px) {
+    .stat-value {
+      font-size: 2.2rem;
+    }
+    .stat-label {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Animation des compteurs au scroll
+  const counters = document.querySelectorAll('.stat-value');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target') || '0', 10);
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 2000; // ms
+        const startTime = performance.now();
+
+        const update = (currentTime: number) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const currentValue = Math.floor(progress * target);
+          el.textContent = currentValue + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = target + suffix;
+          }
+        };
+
+        requestAnimationFrame(update);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((counter) => observer.observe(counter));
+</script>

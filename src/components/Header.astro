@@ -1,0 +1,328 @@
+---
+// src/components/Header.astro
+import { siteConfig } from '../config';
+---
+
+<header class="navbar" id="navbar" role="banner">
+  <div class="navbar-inner container">
+    <a href="#accueil" class="navbar-logo" aria-label="KAMIX Consulting — Accueil">
+        <img
+            src="/logo.png"
+            alt="KAMIX Consulting"
+            class="logo-img"
+            width="180"
+            height="60"
+        />
+    </a>
+
+    <nav class="navbar-nav" id="navbar-nav" aria-label="Navigation principale" role="navigation">
+      <ul>
+        <li><a href="#accueil" class="nav-link active" data-section="accueil">Accueil</a></li>
+        <li><a href="#services" class="nav-link" data-section="services">Services</a></li>
+        <li><a href="#realisations" class="nav-link" data-section="realisations">Réalisations</a></li>
+        <li><a href="#pourquoi-kamix" class="nav-link" data-section="pourquoi-kamix">Pourquoi KAMIX</a></li>
+        <li><a href="#apropos" class="nav-link" data-section="apropos">À propos</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button
+      class="navbar-toggle"
+      id="navbar-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="navbar-nav"
+    >
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(11, 31, 58, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-lg);
+    transition: padding 0.3s ease, background 0.3s ease;
+    padding: 1rem 0;
+  }
+
+  .navbar.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(11, 31, 58, 0.98);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .navbar-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+    text-decoration: none;
+    flex-shrink: 0;
+    /* Ajout pour l'animation bounce */
+    transition: transform 0.3s ease;
+    will-change: transform;
+  }
+
+  .navbar-logo:hover {
+    animation: logo-bounce 1.2s ease infinite;
+  }
+
+  @keyframes logo-bounce {
+    0%   { transform: translateX(0); }
+    30%  { transform: translateX(10px); }
+    50%  { transform: translateX(-6px); }
+    70%  { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+  }
+
+  .logo-img {
+    height: clamp(40px, 6vw, 60px);
+    width: auto;
+    display: block;
+    /* Si le logo n'est pas déjà blanc, appliquez ce filtre : */
+    filter: brightness(0) invert(1);
+  }
+
+  .logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    filter: brightness(0) invert(1);
+  }
+
+  .navbar-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: inline-block;
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1.2rem;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 400;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible,
+  .nav-link.active {
+    color: var(--primary-light);
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after,
+  .nav-link.active::after {
+    width: 80%;
+  }
+
+  /* Hamburger */
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+
+  .toggle-bar {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-toggle[aria-expanded="true"] .toggle-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .navbar-toggle[aria-expanded="true"] .toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-toggle[aria-expanded="true"] .toggle-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Mobile / Tablette */
+  @media (max-width: 991px) {
+    .navbar-toggle {
+      display: flex;
+    }
+
+    .navbar-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 85vw);
+      height: 100vh;
+      background: var(--dark);
+      padding: 5rem 2rem 2rem;
+      transition: right 0.4s ease;
+      box-shadow: var(--shadow-xl);
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .navbar-nav.open {
+      right: 0;
+    }
+
+    .navbar-nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .navbar {
+      padding: 0.75rem 0;
+    }
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .nav-link::after,
+    .navbar-nav {
+      transition: none;
+    }
+    /* Désactiver l'animation bounce si mouvement réduit */
+    .navbar-logo:hover {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById('navbar-toggle');
+  const nav = document.getElementById('navbar-nav');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Menu mobile toggle
+  toggle?.addEventListener('click', () => {
+    if (!nav) return;
+    const isOpen = nav.classList.contains('open');
+    nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+
+  // Fermer le menu après clic sur une ancre
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!nav) return;
+      nav.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Ouvrir le menu');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // État scrolled de la navbar
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // IntersectionObserver pour liens actifs
+  const sections = document.querySelectorAll('section[id]');
+  const observerOptions = {
+    rootMargin: '-80px 0px -60% 0px',
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const currentId = entry.target.id;
+        navLinks.forEach((link) => {
+          const section = link.getAttribute('data-section');
+          if (section === currentId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+
+  // Défilement doux avec compensation navbar
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId.length > 1) {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          const navbarHeight = navbar?.offsetHeight || 76;
+          const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>

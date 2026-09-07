@@ -1,0 +1,633 @@
+/* Styles pour les composants React (carrousels, formulaire, etc.) */
+
+/* ========== Section Témoignages (slideshow plein cadre) ========== */
+.testimonials-section {
+  background: var(--secondary);
+  overflow: hidden;
+}
+
+.testimonials-section .section-header h2 {
+  color: var(--primary);
+  font-size: calc(var(--title-size) * 1.1);
+}
+
+.testimonials-section .section-subtitle {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonials-slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-lg);
+}
+
+.testimonials-slideshow .swiper {
+  width: 100%;
+  height: 450px;
+}
+
+.testimonial-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-slide-overlay {
+  max-width: 800px;
+  padding: 3rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.testimonial-quote-mark {
+  font-size: 5rem;
+  color: var(--primary);
+  font-family: var(--font-heading);
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.testimonial-slide-quote {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.testimonial-slide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.testimonial-slide-info {
+  text-align: left;
+}
+
+.testimonial-slide-name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--white);
+  display: block;
+}
+
+.testimonial-slide-role {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonials-slideshow .swiper-pagination-bullet {
+  background: var(--primary);
+  opacity: 0.5;
+}
+
+.testimonials-slideshow .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--primary);
+}
+
+.testimonials-slideshow .swiper-button-prev,
+.testimonials-slideshow .swiper-button-next {
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.3);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.testimonials-slideshow .swiper-button-prev:hover,
+.testimonials-slideshow .swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.testimonials-slideshow .swiper-button-prev::after,
+.testimonials-slideshow .swiper-button-next::after {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .testimonials-slideshow .swiper {
+    height: 350px;
+  }
+  .testimonial-slide-overlay {
+    padding: 1.5rem;
+  }
+  .testimonial-quote-mark {
+    font-size: 3.5rem;
+  }
+  .testimonial-slide-quote {
+    font-size: 1.2rem;
+  }
+  .testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  .testimonial-slide-name {
+    font-size: 1.1rem;
+  }
+  .testimonial-slide-role {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-slideshow .swiper {
+    animation: none;
+  }
+}
+
+/* ========== Formulaire de témoignage ========== */
+.testimonial-form-wrapper {
+  max-width: 650px;
+  margin: 3rem auto 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-card);
+  border: 1px solid rgba(201, 162, 39, 0.25);
+}
+
+.testimonial-form-title {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+}
+
+.testimonial-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-form label {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.testimonial-form input,
+.testimonial-form textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: var(--lighter);
+  color: #0f172a;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-form input:focus,
+.testimonial-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+.testimonial-form .form-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+.testimonial-form .form-status {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.testimonial-form .form-status.success {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.testimonial-form .form-status.error {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.testimonial-form .form-status.loading {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ========== Toggle du formulaire de témoignage ========== */
+.testimonial-toggle {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.testimonial-toggle-btn {
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+}
+
+.testimonial-close-btn {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* ========== Slideshow Réalisations ========== */
+.realisations-section {
+  background: var(--light);
+}
+
+.realisations-slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-lg);
+}
+
+.realisations-slideshow .swiper {
+  width: 100%;
+  height: 500px;
+}
+
+.realisation-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.realisation-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.realisation-slide-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: var(--white);
+}
+
+.realisation-slide-badge {
+  display: inline-block;
+  background: var(--primary-gradient);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.realisation-slide-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+
+.realisations-slideshow .swiper-pagination-bullet {
+  background: var(--primary);
+  opacity: 0.5;
+}
+
+.realisations-slideshow .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--primary);
+}
+
+.realisations-slideshow .swiper-button-prev,
+.realisations-slideshow .swiper-button-next {
+  color: var(--white);
+  background: rgba(0,0,0,0.3);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.realisations-slideshow .swiper-button-prev:hover,
+.realisations-slideshow .swiper-button-next:hover {
+  background: rgba(0,0,0,0.6);
+}
+
+.realisations-slideshow .swiper-button-prev::after,
+.realisations-slideshow .swiper-button-next::after {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.testimonials-empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-card);
+  border: 1px dashed rgba(201, 162, 39, 0.3);
+}
+
+@media (max-width: 991px) {
+  .realisations-slideshow .swiper {
+    height: 400px;
+  }
+}
+
+@media (max-width: 575px) {
+  .realisations-slideshow .swiper {
+    height: 300px;
+  }
+  .realisation-slide-overlay {
+    padding: 1rem;
+  }
+  .realisation-slide-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .realisations-slideshow .swiper {
+    animation: none;
+  }
+}
+
+/* ========== Formulaire de contact ========== */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--white);
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.contact-info-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-info-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+
+.contact-info-text {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  background: var(--white);
+  padding: 2.5rem 2rem !important;
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-size: 1rem !important;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: var(--font-body);
+  padding: 0.8rem 1.2rem !important;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  width: 100%;
+  background: var(--lighter);
+  color: #0f172a;
+  min-height: 2.8rem;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+  background: #fffdf5;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+  background: var(--white);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  min-height: 1.3em;
+}
+
+.form-status {
+  min-height: 2em;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.form-status.success {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.form-status.error {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.form-status.loading {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ===== Styles pour le bouton type hero ===== */
+.btn-hero {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  background: var(--primary);
+  transform: translateX(-50%);
+  transition: width 0.5s ease;
+  z-index: -1;
+}
+
+.btn-hero:hover::before,
+.btn-hero:focus-visible::before {
+  width: 100%;
+}
+
+.btn-hero-primary,
+.btn-hero-primary:visited,
+.btn-hero-primary:active {
+  background: var(--white) !important;
+  color: var(--primary) !important;
+  border: 2px solid var(--primary) !important;
+  text-decoration: none !important;
+}
+
+.btn-hero-primary:hover,
+.btn-hero-primary:focus-visible {
+  color: var(--white) !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.form-submit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem !important;
+  padding: 1rem 2rem !important;
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 575px) {
+  .contact-form {
+    padding: 2rem 1.5rem !important;
+  }
+  .form-group label {
+    font-size: 0.95rem !important;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.95rem !important;
+    padding: 0.7rem 1rem !important;
+  }
+  .form-submit {
+    font-size: 1rem !important;
+    padding: 0.9rem 1.8rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    transition: none;
+  }
+  .btn-hero::before {
+    transition: none;
+  }
+  .btn-hero:hover::before {
+    width: 100%;
+  }
+  .form-submit:hover {
+    transform: none;
+  }
+}

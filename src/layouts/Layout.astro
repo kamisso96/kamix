@@ -1,0 +1,91 @@
+---
+// src/layouts/Layout.astro
+import BackToTop from '../components/BackToTop.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Haikou KAMIX Consulting Co., Ltd. – Connecting Opportunities Across Borders',
+  description = 'Cabinet de conseil basé à Haikou, Chine, facilitant la coopération commerciale et éducative entre la Chine et l\'Afrique.',
+  image = 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1935&q=80',
+} = Astro.props;
+
+const canonical = 'https://www.kamix-consulting.com/';
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="canonical" href={canonical} />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Haikou KAMIX Consulting Co., Ltd." />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+  
+  <!-- Polices Google chargées de manière asynchrone -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" />
+  </noscript>
+
+  <!-- Favicon (SVG inline) -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23C9A227'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E"
+  />
+  
+  <!-- JSON-LD Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Haikou KAMIX Consulting Co., Ltd.",
+      "url": "{canonical}",
+      "logo": "{canonical}logo.png",
+      "description": "{description}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Haikou",
+        "addressRegion": "Hainan",
+        "addressCountry": "CN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["French", "English", "Chinese", "Arabic"]
+      }
+    }
+  </script>
+  
+  <!-- Styles globaux -->
+  <style is:global>
+    @import '../styles/global.css';
+    @import '../styles/react-components.css';
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+  <slot />
+  <BackToTop />
+</body>
+</html>
