@@ -7,7 +7,7 @@ export const siteConfig = {
     email: 'contact@kamix-consulting.com',
     phone: '+86 898 1234 5678',
     address: 'Haikou, Province de Hainan, Chine',
-    formspreeEndpoint: import.meta.env.PUBLIC_CONTACT_ENDPOINT || 'https://formspree.io/f/xzdlwraj',
+    formspreeEndpoint: import.meta.env.PUBLIC_CONTACT_ENDPOINT || 'https://formspree.io/f/maeyvlnv',
     testimonialEndpoint: import.meta.env.PUBLIC_TESTIMONIAL_ENDPOINT || 'https://formspree.io/f/xkjnqwgd',
   },
  social: {

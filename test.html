@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Formspree</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 500px;
+      margin: 3rem auto;
+      padding: 1.5rem;
+      background: #f8f7f4;
+    }
+    form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #0B1F3A;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #C9A227;
+    }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 1rem;
+      background: #C9A227;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.6;
+    }
+    #status {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
+    #status.success { display: block; background: #dcfce7; color: #166534; }
+    #status.error   { display: block; background: #fee2e2; color: #991b1b; }
+    #status.loading { display: block; background: #fef3c7; color: #92400e; }
+  </style>
+</head>
+<body>
+  <form id="test-form">
+    <label for="name">Nom complet</label>
+    <input type="text" id="name" name="name" value="KAMIX Test" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" value="test@kamix-consulting.com" required>
+
+    <label for="phone">Téléphone</label>
+    <input type="tel" id="phone" name="phone" value="+86 178 5785 2690" required>
+
+    <label for="service">Service souhaité</label>
+    <select id="service" name="service" required>
+      <option value="business" selected>China Business Consulting</option>
+      <option value="sourcing">Sourcing & Procurement</option>
+      <option value="trade">International Trade & Logistics</option>
+      <option value="education">Education Consulting</option>
+      <option value="scholarship">China Scholarship & Admission</option>
+      <option value="other">Autre demande</option>
+    </select>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required>Ceci est un message de test pour vérifier la connexion Formspree. Merci de confirmer la réception.</textarea>
+
+    <button type="submit" id="submit-btn">Envoyer</button>
+
+    <div id="status"></div>
+  </form>
+
+  <script>
+    const ENDPOINT = 'https://formspree.io/f/maeyvlnv';
+    const form = document.getElementById('test-form');
+    const statusDiv = document.getElementById('status');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      statusDiv.className = 'loading';
+      statusDiv.textContent = 'Envoi en cours...';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          statusDiv.className = 'success';
+          statusDiv.textContent = '✅ Message envoyé avec succès !';
+          form.reset();
+        } else {
+          statusDiv.className = 'error';
+          statusDiv.textContent = `❌ Erreur ${response.status}. Veuillez réessayer.`;
+        }
+      } catch (err) {
+        statusDiv.className = 'error';
+        statusDiv.textContent = `❌ Erreur réseau. Veuillez réessayer.`;
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
