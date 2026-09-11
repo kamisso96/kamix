@@ -1,6 +1,7 @@
 ---
 // src/layouts/Layout.astro
 import BackToTop from '../components/BackToTop.astro';
+import Analytics from '@vercel/analytics/astro'
 
 interface Props {
   title?: string;
@@ -82,5 +83,6 @@ const canonical = 'https://www.kamix-consulting.com/';
   <a href="#main-content" class="skip-link">Aller au contenu principal</a>
   <slot />
   <BackToTop />
+  <Analytics />
 </body>
 </html>
