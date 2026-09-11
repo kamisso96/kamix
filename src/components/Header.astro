@@ -20,7 +20,6 @@ import { siteConfig } from '../config';
         <li><a href="#accueil" class="nav-link active" data-section="accueil">Accueil</a></li>
         <li><a href="#services" class="nav-link" data-section="services">Services</a></li>
         <li><a href="#realisations" class="nav-link" data-section="realisations">Réalisations</a></li>
-        <li><a href="#pourquoi-kamix" class="nav-link" data-section="pourquoi-kamix">Pourquoi KAMIX</a></li>
         <li><a href="#apropos" class="nav-link" data-section="apropos">À propos</a></li>
         <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
       </ul>
@@ -74,7 +73,6 @@ import { siteConfig } from '../config';
     line-height: 1.1;
     text-decoration: none;
     flex-shrink: 0;
-    /* Ajout pour l'animation bounce */
     transition: transform 0.3s ease;
     will-change: transform;
   }
@@ -95,7 +93,6 @@ import { siteConfig } from '../config';
     height: clamp(40px, 6vw, 60px);
     width: auto;
     display: block;
-    /* Si le logo n'est pas déjà blanc, appliquez ce filtre : */
     filter: brightness(0) invert(1);
   }
 
@@ -242,7 +239,6 @@ import { siteConfig } from '../config';
     .navbar-nav {
       transition: none;
     }
-    /* Désactiver l'animation bounce si mouvement réduit */
     .navbar-logo:hover {
       animation: none;
     }
@@ -255,7 +251,6 @@ import { siteConfig } from '../config';
   const nav = document.getElementById('navbar-nav');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  // Menu mobile toggle
   toggle?.addEventListener('click', () => {
     if (!nav) return;
     const isOpen = nav.classList.contains('open');
@@ -265,7 +260,6 @@ import { siteConfig } from '../config';
     document.body.style.overflow = isOpen ? '' : 'hidden';
   });
 
-  // Fermer le menu après clic sur une ancre
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
       if (!nav) return;
@@ -276,7 +270,6 @@ import { siteConfig } from '../config';
     });
   });
 
-  // État scrolled de la navbar
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar?.classList.add('scrolled');
@@ -285,7 +278,6 @@ import { siteConfig } from '../config';
     }
   }, { passive: true });
 
-  // IntersectionObserver pour liens actifs
   const sections = document.querySelectorAll('section[id]');
   const observerOptions = {
     rootMargin: '-80px 0px -60% 0px',
@@ -310,7 +302,6 @@ import { siteConfig } from '../config';
 
   sections.forEach((section) => observer.observe(section));
 
-  // Défilement doux avec compensation navbar
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');

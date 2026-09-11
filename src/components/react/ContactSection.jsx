@@ -90,8 +90,10 @@ export default function ContactSection() {
             placeholder="Votre nom"
             autoComplete="name"
             className={errors.name ? 'error' : ''}
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'error-name' : undefined}
           />
-          {errors.name && <span className="form-error">{errors.name}</span>}
+          {errors.name && <span className="form-error" id="error-name" role="alert">{errors.name}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="form-email">Email *</label>
@@ -105,8 +107,10 @@ export default function ContactSection() {
             placeholder="votre@email.com"
             autoComplete="email"
             className={errors.email ? 'error' : ''}
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'error-email' : undefined}
           />
-          {errors.email && <span className="form-error">{errors.email}</span>}
+          {errors.email && <span className="form-error" id="error-email" role="alert">{errors.email}</span>}
         </div>
       </div>
 
@@ -125,8 +129,10 @@ export default function ContactSection() {
             placeholder="+33 6 12 34 56 78"
             autoComplete="tel"
             className={errors.phone ? 'error' : ''}
+            aria-invalid={errors.phone ? 'true' : 'false'}
+            aria-describedby={errors.phone ? 'error-phone' : undefined}
           />
-          {errors.phone && <span className="form-error">{errors.phone}</span>}
+          {errors.phone && <span className="form-error" id="error-phone" role="alert">{errors.phone}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="form-service">Service souhaité *</label>
@@ -137,6 +143,8 @@ export default function ContactSection() {
             onChange={handleChange}
             required
             className={errors.service ? 'error' : ''}
+            aria-invalid={errors.service ? 'true' : 'false'}
+            aria-describedby={errors.service ? 'error-service' : undefined}
           >
             <option value="" disabled>Sélectionnez un service</option>
             <option value="business">China Business Consulting</option>
@@ -146,7 +154,7 @@ export default function ContactSection() {
             <option value="scholarship">China Scholarship & Admission</option>
             <option value="other">Autre demande</option>
           </select>
-          {errors.service && <span className="form-error">{errors.service}</span>}
+          {errors.service && <span className="form-error" id="error-service" role="alert">{errors.service}</span>}
         </div>
       </div>
 
@@ -163,17 +171,20 @@ export default function ContactSection() {
           maxLength="2000"
           placeholder="Décrivez votre projet ou votre demande..."
           className={errors.message ? 'error' : ''}
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'error-message' : undefined}
         />
-        {errors.message && <span className="form-error">{errors.message}</span>}
+        {errors.message && <span className="form-error" id="error-message" role="alert">{errors.message}</span>}
       </div>
 
-      {status === 'loading' && <div className="form-status loading">Envoi en cours...</div>}
-      {status === 'success' && <div className="form-status success">✅ Votre message a été envoyé avec succès.</div>}
-      {status === 'error' && <div className="form-status error">❌ Une erreur est survenue. Veuillez réessayer.</div>}
+      {status === 'loading' && <div className="form-status loading" role="status">Envoi en cours...</div>}
+      {status === 'success' && <div className="form-status success" role="status">✅ Votre message a été envoyé avec succès.</div>}
+      {status === 'error' && <div className="form-status error" role="alert">❌ Une erreur est survenue. Veuillez réessayer.</div>}
 
+      {/* ===== FIX #3 & #6 : bouton dominant à fond doré plein, texte blanc ===== */}
       <button
         type="submit"
-        className="btn btn-hero btn-hero-primary form-submit"
+        className="contact-submit-btn"
         disabled={status === 'loading'}
       >
         Envoyer le message

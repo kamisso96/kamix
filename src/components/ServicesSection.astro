@@ -5,7 +5,7 @@ import { services } from '../data/services';
 
 <section class="services-section" id="services" role="region" aria-label="Nos services">
   <div class="container">
-    <div class="section-header" data-aos="fade-up">
+    <div class="section-header">
       <h2>NOS SERVICES</h2>
       <p class="section-subtitle">
         Des solutions complètes pour vous accompagner dans vos projets entre la Chine et le Monde.
@@ -16,8 +16,6 @@ import { services } from '../data/services';
       {services.map((service, index) => (
         <article
           class="service-card"
-          data-aos="fade-up"
-          data-aos-delay={String(index * 100)}
         >
           <div class="service-icon-wrap">
             <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -59,15 +57,13 @@ import { services } from '../data/services';
           </div>
           <h3 class="service-title">{service.title}</h3>
           <p class="service-description">{service.description}</p>
-          <a href="#contact" class="service-link">
-            En savoir plus
-            <svg class="service-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
         </article>
       ))}
+    </div>
+
+    <!-- ===== FIX #7 : CTA unique en bas de section ===== -->
+    <div class="services-cta">
+      <a href="#contact" class="btn btn-primary">Discutons de votre projet</a>
     </div>
   </div>
 </section>
@@ -77,13 +73,12 @@ import { services } from '../data/services';
     background: var(--white);
   }
 
-  /* Titre de section en doré et police augmentée */
+  /* ===== FIX #4 : titre en doré foncé pour contraste AA ===== */
   .services-section .section-header h2 {
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: calc(var(--title-size) * 1.1);
   }
 
-  /* Sous-titre en gras */
   .services-section .section-subtitle {
     font-size: 1.15rem;
     font-weight: 700;
@@ -175,7 +170,6 @@ import { services } from '../data/services';
     color: var(--white);
   }
 
-  /* Titre de carte augmenté */
   .service-title {
     font-size: 1.4rem;
     font-weight: 700;
@@ -184,43 +178,23 @@ import { services } from '../data/services';
     font-family: var(--font-heading);
   }
 
-  /* Description augmentée */
   .service-description {
     color: var(--gray);
     font-size: 1.05rem;
     line-height: 1.7;
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
   }
 
-  /* Lien augmenté et centré */
-  .service-link {
-    display: inline-flex;
-    align-items: center;
+  /* ===== FIX #7 : styles du CTA unique ===== */
+  .services-cta {
+    display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    color: var(--primary);
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: gap 0.3s ease, color 0.3s ease;
-    align-self: center; /* centre le bouton horizontalement */
+    margin-top: 3.5rem;
   }
 
-  .service-link:hover,
-  .service-link:focus-visible {
-    color: var(--primary-dark);
-    gap: 0.75rem;
-  }
-
-  .service-link-icon {
-    transition: transform 0.3s ease;
-    width: 18px;
-    height: 18px;
-  }
-
-  .service-link:hover .service-link-icon {
-    transform: translateX(3px);
+  .services-cta .btn {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    padding: 1.1rem 2.75rem !important;
   }
 
   @media (max-width: 575px) {
@@ -239,8 +213,14 @@ import { services } from '../data/services';
     .service-description {
       font-size: 1rem;
     }
-    .service-link {
-      font-size: 0.95rem;
+    .services-cta {
+      margin-top: 2.5rem;
+    }
+    .services-cta .btn {
+      font-size: 1rem !important;
+      padding: 1rem 2rem !important;
+      width: 100%;
+      text-align: center;
     }
   }
 
@@ -251,9 +231,6 @@ import { services } from '../data/services';
     .service-card:hover,
     .service-card:focus-within {
       transform: none;
-    }
-    .service-link {
-      transition: none;
     }
   }
 </style>

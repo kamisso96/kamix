@@ -30,7 +30,7 @@ import { siteConfig } from '../config';
 
     <section class="realisations-section" id="realisations" role="region" aria-label="Nos réalisations">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header">
           <h2>NOS RÉALISATIONS</h2>
           <p class="section-subtitle">
             Découvrez quelques exemples concrets de nos interventions entre la Chine et l'Afrique.
@@ -44,7 +44,7 @@ import { siteConfig } from '../config';
 
     <section class="testimonials-section" id="temoignages" role="region" aria-label="Témoignages">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header">
           <h2>ILS NOUS ONT FAIT CONFIANCE</h2>
           <p class="section-subtitle">
             Découvrez les expériences de nos clients et partenaires.
@@ -63,7 +63,7 @@ import { siteConfig } from '../config';
 
     <section class="contact-wrapper-section" id="contact" role="region" aria-label="Contact">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header">
           <h2>CONTACTEZ-NOUS</h2>
           <p class="section-subtitle">
             Notre équipe est à l'écoute pour tous vos projets entre la Chine et l'Afrique.
@@ -160,9 +160,9 @@ import { siteConfig } from '../config';
     }
   }
 
-  /* Titre et sous-titre de la section Contact */
+  /* ===== FIX #4 : titre Contact en doré foncé pour contraste AA ===== */
   .contact-wrapper-section .section-header h2 {
-    color: var(--primary) !important;
+    color: var(--primary-dark) !important;
     font-size: calc(var(--title-size) * 1.1) !important;
   }
 
@@ -184,7 +184,6 @@ import { siteConfig } from '../config';
     color: #FFFFFF !important;
   }
 
-  /* Texte en gras pour tout le contenu de la carte */
   .contact-card-title,
   .contact-card-row,
   .contact-card-row a,
@@ -193,23 +192,20 @@ import { siteConfig } from '../config';
     font-weight: 700 !important;
   }
 
-  /* Titre de la carte */
   .contact-card-title {
     font-size: 1.8rem !important;
     color: #FFFFFF !important;
     margin-bottom: 0.5rem;
   }
 
-  /* Lignes de contact */
   .contact-card-row {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
     font-size: 1.1rem !important;
   }
 
-  /* Icônes de lignes agrandies */
   .contact-card-icon {
     width: 28px !important;
     height: 28px !important;
@@ -235,7 +231,7 @@ import { siteConfig } from '../config';
   }
 
   .contact-hours span {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
     font-size: 1rem !important;
   }
 
@@ -257,7 +253,7 @@ import { siteConfig } from '../config';
     flex-wrap: wrap;
   }
 
-  /* Icônes sociales agrandies et avec rotation */
+  /* Icônes sociales identiques au footer */
   .contact-social-link {
     display: flex;
     align-items: center;
@@ -273,7 +269,7 @@ import { siteConfig } from '../config';
 
   .contact-social-link:hover {
     background: #FFFFFF !important;
-    color: var(--primary) !important;
+    color: var(--primary-dark) !important;
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
   }
@@ -319,30 +315,14 @@ import { siteConfig } from '../config';
     }
   }
 
-  /* ===== Section Réalisations : titre doré, sous-titre en gras et polices augmentées ===== */
+  /* ===== FIX #4 : Section Réalisations en doré foncé ===== */
   .realisations-section .section-header h2 {
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: calc(var(--title-size) * 1.15);
   }
 
   .realisations-section .section-subtitle {
     font-weight: 700;
     font-size: 1.2rem;
-  }
-
-  /* ===== Formulaire de témoignage (toggle) ===== */
-  .testimonial-toggle {
-    text-align: center;
-    margin-top: 2rem;
-  }
-
-  .testimonial-toggle-btn {
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-  }
-
-  .testimonial-close-btn {
-    margin-top: 1rem;
-    font-weight: 600;
   }
 </style>

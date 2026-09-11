@@ -4,7 +4,7 @@
 
 <section class="about-section" id="apropos" role="region" aria-label="À propos">
   <div class="container">
-    <div class="section-header" data-aos="fade-up">
+    <div class="section-header">
       <h2>À PROPOS DE KAMIX</h2>
       <p class="section-subtitle">
         Un cabinet de conseil international basé à Haikou, au cœur de la coopération Chine-Monde.
@@ -13,7 +13,7 @@
 
     <div class="about-grid">
       <!-- Colonne image -->
-      <div class="about-image" data-aos="fade-right">
+      <div class="about-image">
         <img
           src="/fondateur.jpg"
           alt="Fondateur et CEO de KAMIX Consulting"
@@ -30,7 +30,7 @@
       </div>
 
       <!-- Colonne contenu (faits, mission, vision) -->
-      <div class="about-content" data-aos="fade-left">
+      <div class="about-content">
         <div class="about-facts">
           <div class="fact-item">
             <span class="fact-label">Basé à</span>
@@ -63,7 +63,7 @@
       </div>
 
       <!-- Bloc histoire : pleine largeur, sans fond, titre centré -->
-      <div class="about-history" data-aos="fade-up">
+      <div class="about-history">
         <h3 class="history-title">Notre Histoire</h3>
         <p class="history-text">
           Fondé en 2025 à Haikou, KAMIX Consulting accompagne les entreprises, entrepreneurs et particuliers dans leurs projets entre la Chine, l’Afrique et les marchés internationaux.
@@ -88,8 +88,9 @@
     background: var(--white);
   }
 
+  /* ===== FIX #4 : titre en doré foncé pour contraste AA ===== */
   .about-section .section-header h2 {
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: calc(var(--title-size) * 1.1);
   }
 
@@ -221,7 +222,6 @@
     font-style: italic;
   }
 
-  /* Bloc histoire sans fond ni bordure */
   .about-history {
     background: transparent !important;
     border: none !important;
@@ -230,7 +230,7 @@
 
   .history-title {
     font-size: 1.1rem;
-    font-weight: 700; /* déjà en gras, conservé */
+    font-weight: 700;
     color: var(--dark);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
@@ -238,15 +238,13 @@
     text-align: center;
   }
 
-  /* Description de l'histoire en gras */
   .history-text {
     color: var(--gray);
     font-size: 1rem;
     line-height: 1.7;
-    font-weight: 700; /* ajouté */
+    font-weight: 700;
   }
 
-  /* Centrage du bouton */
   .about-cta-wrapper {
     display: flex;
     justify-content: center;
@@ -255,7 +253,9 @@
 
   .about-cta {
     margin: 0 auto;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.1rem !important;
+    padding: 1rem 2.5rem !important;
   }
 
   /* ===== Styles copiés du hero pour le bouton ===== */
@@ -288,7 +288,7 @@
   .btn-hero-primary:visited,
   .btn-hero-primary:active {
     background: var(--white) !important;
-    color: var(--primary) !important;
+    color: #8A6D14 !important;
     border: 2px solid var(--primary) !important;
     text-decoration: none !important;
   }
@@ -319,6 +319,10 @@
     .mv-text,
     .history-text {
       font-size: 0.95rem;
+    }
+    .about-cta {
+      font-size: 1rem !important;
+      padding: 0.9rem 1.8rem !important;
     }
   }
 

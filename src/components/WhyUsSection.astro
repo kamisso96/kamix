@@ -5,7 +5,7 @@ import { whyUsItems } from '../data/whyUs';
 
 <section class="whyus-section" id="pourquoi-kamix" role="region" aria-label="Pourquoi choisir KAMIX">
   <div class="container">
-    <div class="section-header" data-aos="fade-up">
+    <div class="section-header">
       <h2>POURQUOI CHOISIR KAMIX ?</h2>
       <p class="section-subtitle">
         Notre expertise unique et notre position stratégique font de nous le partenaire idéal pour vos projets.
@@ -16,8 +16,6 @@ import { whyUsItems } from '../data/whyUs';
       {whyUsItems.map((item, index) => (
         <div
           class="whyus-card"
-          data-aos="zoom-in"
-          data-aos-delay={String(index * 80)}
         >
           <div class="whyus-icon-wrap">
             <svg class="whyus-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -69,19 +67,17 @@ import { whyUsItems } from '../data/whyUs';
     background: linear-gradient(180deg, var(--light) 0%, var(--lighter) 100%);
   }
 
-  /* Titre de section en doré et police augmentée */
+  /* ===== FIX #4 : titre en doré foncé pour contraste AA ===== */
   .whyus-section .section-header h2 {
-    color: var(--primary);
+    color: var(--primary-dark);
     font-size: calc(var(--title-size) * 1.1);
   }
 
-  /* Sous-titre en gras et taille augmentée */
   .whyus-section .section-subtitle {
     font-weight: 700;
     font-size: 1.15rem;
   }
 
-  /* === Utilisation de flex pour centrer les cartes === */
   .whyus-grid {
     display: flex;
     flex-wrap: wrap;
@@ -102,21 +98,18 @@ import { whyUsItems } from '../data/whyUs';
     width: 100%;
   }
 
-  /* Tablette : 2 cartes par ligne */
   @media (min-width: 576px) {
     .whyus-card {
       width: calc(50% - 0.75rem);
     }
   }
 
-  /* Desktop : 3 cartes par ligne */
   @media (min-width: 992px) {
     .whyus-card {
       width: calc(33.333% - 1rem);
     }
   }
 
-  /* === Hover plus marqué === */
   .whyus-card:hover,
   .whyus-card:focus-within {
     transform: translateY(-8px);
@@ -152,7 +145,6 @@ import { whyUsItems } from '../data/whyUs';
     color: var(--white);
   }
 
-  /* Titres des cartes agrandis */
   .whyus-title {
     font-size: 1.25rem;
     font-weight: 700;
@@ -161,7 +153,6 @@ import { whyUsItems } from '../data/whyUs';
     font-family: var(--font-heading);
   }
 
-  /* Descriptions agrandies */
   .whyus-description {
     color: var(--gray);
     font-size: 1rem;

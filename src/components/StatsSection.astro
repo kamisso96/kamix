@@ -11,8 +11,8 @@ const stats = [
 <section class="stats-section" id="chiffres-cles" role="region" aria-label="Chiffres clés">
   <div class="container">
     <div class="stats-grid">
-      {stats.map((stat, index) => (
-        <div class="stat-card" data-aos="fade-up" data-aos-delay={String(index * 100)}>
+      {stats.map((stat) => (
+        <div class="stat-card">
           <span class="stat-value" data-target={stat.value} data-suffix={stat.suffix}>
             0{stat.suffix}
           </span>
@@ -28,17 +28,6 @@ const stats = [
     background: var(--secondary);
     color: var(--white);
     padding: var(--section-padding) 0;
-  }
-
-  .stats-section .section-header h2 {
-    color: var(--primary);
-    font-size: calc(var(--title-size) * 1.1);
-  }
-
-  .stats-section .section-subtitle {
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.8);
   }
 
   .stats-grid {
@@ -65,12 +54,13 @@ const stats = [
     border: 1px solid rgba(201, 162, 39, 0.3);
     border-radius: var(--border-radius-card);
     padding: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
 
   .stat-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
   }
 
   .stat-value {
@@ -78,14 +68,15 @@ const stats = [
     font-family: var(--font-heading);
     font-size: 3rem;
     font-weight: 800;
-    color: var(--primary);
+    color: var(--primary-light);
     line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .stat-label {
     font-size: 1.1rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
   }
 
   @media (max-width: 575px) {
@@ -96,18 +87,26 @@ const stats = [
       font-size: 1rem;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-card {
+      transition: none;
+    }
+    .stat-card:hover {
+      transform: none;
+    }
+  }
 </style>
 
 <script>
-  // Animation des compteurs au scroll
   const counters = document.querySelectorAll('.stat-value');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const el = entry.target;
+        const el = entry.target as HTMLElement;
         const target = parseInt(el.getAttribute('data-target') || '0', 10);
         const suffix = el.getAttribute('data-suffix') || '';
-        const duration = 2000; // ms
+        const duration = 2000;
         const startTime = performance.now();
 
         const update = (currentTime: number) => {

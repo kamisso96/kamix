@@ -17,8 +17,8 @@
     stroke-linecap="round"
     stroke-linejoin="round"
     aria-hidden="true"
-    width="24"
-    height="24"
+    width="26"
+    height="26"
   >
     <path d="M12 19V5" />
     <path d="m5 12 7-7 7 7" />
@@ -26,6 +26,7 @@
 </a>
 
 <style>
+  /* ===== FIX #5 : cible tactile 52px desktop / 48px mobile (WCAG 2.5.5) ===== */
   .back-to-top {
     position: fixed;
     bottom: 1.5rem;
@@ -34,8 +35,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: var(--primary-gradient);
     color: var(--white);
@@ -60,21 +61,20 @@
     }
   }
 
-  /* Sur mobile, légèrement plus petit et décalé */
+  /* Sur mobile : 48px minimum pour respecter la cible tactile */
   @media (max-width: 575px) {
     .back-to-top {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       bottom: 1rem;
       right: 1rem;
     }
     .back-to-top svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
     }
   }
 
-  /* Respect des préférences de mouvement réduit */
   @media (prefers-reduced-motion: reduce) {
     .back-to-top {
       animation: none;

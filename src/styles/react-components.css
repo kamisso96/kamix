@@ -346,6 +346,7 @@
   font-size: 1.25rem;
   font-weight: 700;
 }
+
 .testimonials-empty {
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
@@ -582,6 +583,55 @@
   box-shadow: var(--shadow-lg);
 }
 
+/* ===== FIX #3 & #6 : bouton du formulaire de contact dominant ===== */
+.contact-submit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 1.2rem 2.5rem;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  background: var(--primary-gradient);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(201, 162, 39, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.contact-submit-btn:hover:not(:disabled),
+.contact-submit-btn:focus-visible:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 35px -5px rgba(201, 162, 39, 0.6);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--primary-light));
+}
+
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 575px) {
+  .contact-submit-btn {
+    font-size: 1.05rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-submit-btn {
+    transition: none;
+  }
+  .contact-submit-btn:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* ===== Ancien .form-submit conservé pour compatibilité (peut être retiré) ===== */
 .form-submit {
   width: 100%;
   border: none;

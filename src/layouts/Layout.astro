@@ -26,7 +26,6 @@ const canonical = 'https://www.kamix-consulting.com/';
   <title>{title}</title>
   <link rel="canonical" href={canonical} />
   
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -35,26 +34,22 @@ const canonical = 'https://www.kamix-consulting.com/';
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:site_name" content="Haikou KAMIX Consulting Co., Ltd." />
   
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
   
-  <!-- Polices Google chargées de manière asynchrone -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" />
-  </noscript>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" /></noscript>
 
-  <!-- Favicon (SVG inline) -->
   <link
     rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23C9A227'/%3E%3Ctext x='50' y='70' font-size='60' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E"
   />
   
-  <!-- JSON-LD Organization -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
